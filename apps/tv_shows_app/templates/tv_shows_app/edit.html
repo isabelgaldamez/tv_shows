@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{
+                margin:0px;
+                padding:0px;
+
+            }
+            .container{
+                width : 970px;
+                margin: 0px auto;
+            }
+            .network_info {
+                margin-top: 40px;
+                margin-bottom: 30px;
+                display: inline-block;
+                vertical-align: top;
+            }
+           .release_info{
+                margin-top: 40px;
+                margin-bottom: 40px;
+                display: inline-block;
+                vertical-align: top;
+            }
+            .container h1{
+                margin-top: 5px;
+                margin-bottom: 20px;
+                display: inline-block;
+                vertical-align: top;
+            }
+            .container a{
+                margin-top: 5px;
+                display: inline-block;
+                vertical-align: top;
+                margin-left: 40px;
+                font-size: 25px;
+            }
+            .container p{
+                font-size: 25px;
+                margin-right: 20px;
+                
+            }
+            .show_title input{
+                width: 300px;
+                height: 30px;
+                font-size: 20px;
+            }
+            .network_info input{
+                width: 300px;
+                height: 30px;
+                font-size: 20px;
+                margin-right: 50px;
+            }
+            .release_info input{
+                width: 300px;
+                height: 30px;
+                font-size: 20px;
+
+            }
+            .description label{
+                font-size: 25px;
+                margin-right: 20px;
+                display: inline-block;
+                vertical-align: top
+            }
+            .description textarea{
+                height: 150px;
+                width: 450px;
+                font-size: 20px;
+                display: inline-block;
+                vertical-align: top
+            }
+            input[type=submit]{
+                margin-top: 30px;
+                margin-left: 100px;
+                width: 200px;
+                line-height: 30px;
+                padding-top: 20px;
+                font-size: 50px;
+                padding: 0px;
+            }
+            .link_to_show  a{
+                margin-top: 30px;
+                margin-left: 130px;
+                font-size: 20px;
+            }
+        </style>
+        <title>update</title>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>Edit Show {{show_id}}</h1>
+            <form action='/shows/{{show_id}}/update' method='post'>
+                {% csrf_token %}
+                <div class='show_title'>
+                    <p>Title</p>
+                    <input type='text' name='title'>
+                </div>
+                <div class='network'>
+                    <div class='network_info'>
+                        <p>Network</p>
+                        <input type='text' name='network_name'>
+                    </div>
+                    <div class='release_info'>
+                        <p>Release Date</p>
+                        <input type='date' name='release_date'>
+                    </div>
+                </div>
+                <div class='description'>
+                    <label>Description</label>
+                    <textarea rows="4" cols="50" name='show_desc'>
+                    </textarea>
+                </div>
+                <input class='submit_btn'type="submit" value='update'>
+            </form>
+            <div class='link_to_show'>
+                <a href='/shows'>Go to Show</a>
+            </div>
+        </div>
+    </body>
+</html>
