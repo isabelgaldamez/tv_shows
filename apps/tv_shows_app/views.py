@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from .models import Show
 
 def index(request):
-    return render(request, 'tv_shows_app/index.html')
+    return redirect('/shows')
 
 def all_shows(request):
     context = {
