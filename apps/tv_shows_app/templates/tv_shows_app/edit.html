@@ -91,26 +91,32 @@
     <body>
         <div class='container'>
             <h1>Edit Show {{show_id}}</h1>
+            {% if messages %}
+            <ul class='messages'>
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags}}" {% endif %}>{{message}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
             <form action='/shows/{{show_id}}/update' method='post'>
                 {% csrf_token %}
                 <div class='show_title'>
                     <p>Title</p>
-                    <input type='text' name='title'>
+                    <input type='text' name='title' value={{show_info.title}}>
                 </div>
                 <div class='network'>
                     <div class='network_info'>
                         <p>Network</p>
-                        <input type='text' name='network_name'>
+                        <input type='text' name='network_name' value = {{show_info.network}}>
                     </div>
                     <div class='release_info'>
                         <p>Release Date</p>
-                        <input type='date' name='release_date'>
+                        <input type='date' name='release_date' value = {{release_date}}>
                     </div>
                 </div>
                 <div class='description'>
                     <label>Description</label>
-                    <textarea rows="4" cols="50" name='show_desc'>
-                    </textarea>
+                    <textarea rows="4" cols="50" name='show_desc' value = "{{show_info.desc}}"></textarea>
                 </div>
                 <input class='submit_btn'type="submit" value='update'>
             </form>
